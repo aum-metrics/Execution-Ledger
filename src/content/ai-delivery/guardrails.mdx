@@ -1,0 +1,31 @@
+---
+title: "Guardrails & Safety"
+description: "Preventing your chatbot from selling a car for $1."
+---
+
+# Guardrails
+
+If you connect an LLM directly to your customer without guardrails, you are essentially giving a text box to your database and asking "Please be nice."
+
+## Famous Failures
+- **Air Canada**: Chatbot promised a refund policy that didn't exist. The court ruled the chatbot's promise was binding.
+- **Chevrolet**: Chatbot agreed to sell a Tahoe for $1.
+
+## The 3 Layers of Defense
+1.  **System Prompt**: "You are a customer service agent. You cannot authorize payments." (Weakest defense - can be jailbroken).
+2.  **Input/Output Filtering**: Using a separate smaller model (like Llama Guard) to scan the message *before* it goes to the user. checking for toxicity, PII, or policy violation.
+3.  **Deterministic Logic**: The LLM should not *take action*. It should only *categorize intent*.
+    - User: "Refund my order"
+    - LLM: Classification -> `INTENT: REFUND`
+    - Code: `if (policy.allowsRefund) executeRefund()`
+    - **Control remains in code, not AI.**
+
+<DecisionMatrix
+  id="guardrails"
+  title="Guardrail Investment"
+  factors={[
+    { name: "Brand Risk", weight: 5, score: 5, note: "High risk of reputation damage" },
+    { name: "Transaction Capability", weight: 4, score: 5, note: "If it involves money, you need hard rules" },
+    { name: "Internal User", weight: 2, score: 1, note: "Internal tools can be looser" }
+  ]}
+/>

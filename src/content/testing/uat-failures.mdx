@@ -1,0 +1,28 @@
+---
+title: "UAT: Where Requirements Go to Die"
+description: "Why users reject software that meets every requirement."
+author: "Sambath Kumar Natarajan"
+version: "1.0"
+---
+
+{/* Script: UAT: Where Requirements Go to Die */}
+
+# UAT: Where Requirements Go to Die
+
+## The "Contract vs Reality" Gap
+User Acceptance Testing (UAT) is the moment of truth.
+-   **Developers:** "It matches the Design Tool and the Issue Tracker."
+-   **User:** "I hate it."
+
+## Why UAT Fails
+1.  **The "Happy Path" Bias:** PMs design for the perfect user. Real users are messy, distracted, and use Excel for everything.
+2.  **Latency:** Devs test on localhost (0ms). Users are on 4G (100ms). The app feels "sluggish."
+3.  **Data Density:** Devs test with 5 items. Users have 50,000 items. The scrollbar breaks.
+
+## The Fix: Continuous UAT
+Don't save UAT for "Week 12".
+**Put the user in the build loop.**
+-   Feature Flags.
+-   Beta Groups.
+-   "Can you try this screen for 5 minutes?"
+**Validation is not a phase; it's a habit.**

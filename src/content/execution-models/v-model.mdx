@@ -1,0 +1,34 @@
+---
+title: "V-Model: Engineering Rigor"
+description: "Used where failure means death, not just a 404 error."
+author: "Sambath Kumar Natarajan"
+version: "1.0"
+---
+
+{/* Script: V-Model */}
+
+# V-Model
+
+The V-Model connects **Requirements** directly to **Validation** at every level. It is the gold standard for Automotive, Medical, and Aerospace.
+
+## Structure
+- **Left Side (Design)**: Requirements → Arch → Detailed Design
+- **Right Side (Verification)**: UAT ← System Test ← Unit Test
+
+## Why It Matters
+In a typical SaaS startup, if you ship a bug, you revert.
+In a pacemaker, if you ship a bug, you cause critical failure.
+
+<DecisionMatrix
+  id="v_model"
+  title="Decision: Should you use V-Model?"
+  factors={[
+    { name: "Safety Criticality", weight: 5, score: 5, note: "Essential for ISO 26262/IEC 62304" },
+    { name: "Hardware Integration", weight: 4, score: 5, note: "Hardware leads times dictate software gates" },
+    { name: "Market Speed", weight: 3, score: 1, note: "Very slow. Do not use for consumer apps" }
+  ]}
+/>
+
+## Common Mistakes
+1.  **Paperwork Over Process**: Generating documents just for the audit, not for engineering value.
+2.  **Late Integration**: Waiting until the very end of the 'V' to plug the cable in. (Hint: It never works).

@@ -1,0 +1,33 @@
+---
+title: "AI vs Human QA"
+description: "Can a bot feel frustration?"
+---
+
+# AI vs Human QA
+
+We are promised "Autonomous Testing Agents" that explore the app like a user.
+
+## The Capability Gap
+- **AI (LLM Agents)**: Excellent at following instructions ("Click the blue button") and detecting text anomalies.
+- **Human**: Excellent at detecting **"This feels wrong."**
+
+## The "Uncanny Valley" of Bugs
+AI will miss the most damaging bugs:
+1.  **Lag**: The app works, but it feels sluggish. AI sees `<200 OK>`, Human feels annoyance.
+2.  **Context**: The "Delete Account" button is green. AI sees a valid button. Human sees a confusing UX pattern (Dark Pattern).
+3.  **Visual Glitch**: The text is overlapping the image, but readable. OCR reads it fine. Human sees broken polish.
+
+<ComparisonTable
+  title="Detection Capabilities"
+  headers={["Bug Type", "AI Agent", "Human QA"]}
+  rows={[
+    ["Crash / Exception", "Superior (Parses logs instantly)", "Good"],
+    ["Functional Logic", "Good (If specs are perfect)", "Superior (Understands intent)"],
+    ["User Experience", "Zero", "Essential"],
+    ["visual Design", "Poor (Pixel diffs carry noise)", "Superior"]
+  ]}
+/>
+
+## The Future Role
+QA is not dead. "Scripting Manual Test Cases" is dead.
+The QA of 2026 is a **Prompt Engineer for Test Agents**—orchestrating swarms of bots to do the boring checks, while they focus on exploratory destruction.

@@ -1,0 +1,33 @@
+---
+title: "Shift-Left Testing: The Economic Imperative"
+description: "Why finding a bug in dev costs $10 and finding it in prod costs $10,000."
+author: "Sambath Kumar Natarajan"
+version: "1.0"
+---
+
+{/* Script: Shift-Left Testing: The Economic Imperative */}
+
+# Shift-Left Testing: The Economic Imperative
+
+## The Cost of Defect by Phase
+The "NIST Rule of 10" states that the cost of fixing a bug increases 10x at each stage of the SDLC.
+
+| Stage | Cost to Fix | Why? |
+| :--- | :--- | :--- |
+| **Requirements** | $1 (Minutes) | "Oh, we misunderstood the tax law." -> Update Issue Tracker ticket. |
+| **Coding (IDE)** | $10 (Minutes) | Linter catches typo. |
+| **Integration** | $100 (Hours) | CI build breaks. Developer context switch. |
+| **QA** | $1,000 (Days) | QA opens ticket. Repro steps. Triage meeting. Fix. Re-verify. |
+| **Production** | $10,000+ (Weeks) | Hotfix. Data corruption cleanup. PR apology. Customer Churn. |
+
+## Shift-Left is not "Developers do QA"
+It means **Validation moves upstream**.
+1.  **Contract Testing (Pact):** Validate API schemas before writing implementation.
+2.  **Ephemerals:** Every PR gets a full environment. QA happens *during* code review, not after merge.
+3.  **TDD:** Write the test to define the requirement.
+
+## The Cultural Shift
+Shift-Left fails when Management treats it as a cost-cutting measure ("Fire the QAs!").
+**Reality:** You need QAs to become **Quality Engineers**. They write the automation that Developers run locally.
+-   **Old Role:** Find bugs manually.
+-   **New Role:** Build the safety net so Developers can't merge bugs.

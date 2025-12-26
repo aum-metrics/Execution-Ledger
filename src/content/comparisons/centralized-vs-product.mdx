@@ -1,0 +1,32 @@
+---
+title: "Centralized vs Product Teams"
+description: "The pendulum that swings every 3 years."
+---
+
+# Centralized vs Product Teams
+
+Every CTO oscillates between "We need efficiency" (Centralization) and "We need speed" (Product Teams).
+
+## The Cycle of Pain
+1.  **Phase 1 (Product Teams)**: "Move fast and break things." Every team builds their own Auth service.
+    - *Result*: Fast speed, duplicated chaos. 5 different ways to log in.
+2.  **Phase 2 (Centralization)**: "Standardization." A Platform Team is formed to build *The One True Auth*.
+    - *Result*: Consistency, but the Platform Team becomes a bottleneck. Product teams wait 3 weeks for an API change.
+3.  **Phase 3 (Matrix)**: "Guild/Chapter Model." Guilds and Chapters.
+    - *Result*: Nobody knows who their boss is.
+4.  **Repeat**.
+
+## The Reality
+You cannot solve this organizationally. You can only solve it architecturally.
+- **Centralize**: Infrastructure (Cloud, Networking, Security). Things that *must* be consistent.
+- **Decentralize**: Business Logic (Checkout, Search, Inventory). Things that *must* move fast.
+
+<ComparisonTable
+  title="Component Ownership"
+  headers={["Component", "Model", "Why"]}
+  rows={[
+    ["Kubernetes Cluster", "Centralized", "Requires 24/7 expert SREs. Product devs shouldn't touch kubectl."],
+    ["User UI", "Product Team", "Needs daily iteration based on A/B tests."],
+    ["Design System", "Hybrid", "Central core team maintains primitives; Product teams contribute patterns."]
+  ]}
+/>

@@ -1,0 +1,30 @@
+---
+title: "Incremental Delivery"
+description: "Building the house one room at a time vs building the whole frame first."
+author: "Sambath Kumar Natarajan"
+version: "1.0"
+---
+
+{/* Script: Incremental Delivery */}
+
+# Incremental Model
+
+Incremental means delivering finished slices of value.
+
+## Iterative vs Incremental
+- **Iterative**: Sketching the whole painting, then coloring it in. (Refining quality)
+- **Incremental**: Painting the left corner fully, then the center. (Adding scope)
+
+## The Trap
+The biggest risk in Incremental delivery is **Frankenstein Architecture**.
+If you build the "Payments" room without thinking about the "User Profile" room, your hallway (Database) will be a mess.
+
+> [!TIP]
+> You need a "Walking Skeleton" architecture—a thin slice of end-to-end functionality—before you start incremental delivery.
+
+## Execution Reality
+Most "Agile" teams are actually doing **Incremental Waterfall**.
+- Sprint 1: Login
+- Sprint 2: Profile
+- Sprint 3: Dashboard
+This is just a breakdown of a requirements document into 2-week chunks. It is *not* iterative, because they never revisit the Login feature.

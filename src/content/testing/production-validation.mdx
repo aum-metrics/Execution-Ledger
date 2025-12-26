@@ -1,0 +1,29 @@
+---
+title: "Testing in Production: The Taboo"
+description: "Why Staging environments are a lie."
+author: "Sambath Kumar Natarajan"
+version: "1.0"
+---
+
+{/* Script: Testing in Production: The Taboo */}
+
+# Testing in Production: The Taboo
+
+## The Lie of "Staging"
+"It worked in Staging" is the epitaph of every SRE.
+**Staging is not Production.**
+-   It doesn't have the data volume.
+-   It doesn't have the chaotic traffic patterns.
+-   It doesn't have that one weird load balancer config from 2019.
+
+## Safe Testing in Prod
+You don't just "deploy and pray". You use:
+1.  **Canary Deploys:** Roll out to 1% of users. Measure error rate.
+2.  **Feature Flags:** Turn it on for "internal users" first.
+3.  **Synthetic Transaction Monitoring:** A bot that buys an item every 5 minutes to verify the site is up.
+
+## The New QA Mindset
+**Mean Time to Recovery (MTTR) > Mean Time Between Failures (MTBF).**
+-   You cannot prevent 100% of bugs.
+-   But you *can* detect and revert them in 30 seconds.
+-   **Observability is Testing.**

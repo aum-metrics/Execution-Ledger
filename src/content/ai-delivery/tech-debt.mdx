@@ -1,0 +1,60 @@
+---
+title: "AI: The Token Economics of Debt"
+description: "Why your RAG pipeline is costing $5 per query."
+---
+
+# AI: The Token Economics of Debt
+
+## The "looks correct" Bug (LCB)
+Traditional bugs crash. AI bugs hallucinate.
+-   **Traditional Bug:** `NullPointerException`. System halts. Alert fires. Fix deployed in 1 hour.
+-   **AI Bug:** The chatbot politely explains that the user plays for the "Denver Lakers". User leaves confused. No alert fires. Bug persists for 3 months.
+
+## RAG: The Operational Swamp
+
+Retrieval Augmented Generation (RAG) is sold as "Magic memory". It is actually a **Database Management Nightmare**.
+
+### 1. Vector Drift
+You embedded your documentation in January (`text-embedding-3-small`). 
+In March, OpenAI releases a new model.
+-   **The Cost:** You must re-embed 10 million documents.
+-   **The Bill:** 10M chunks * 500 tokens * $0.00002 = $100. Cheap?
+-   **The Real Bill:** Re-indexing into Pinecone/Weaviate. Re-tuning the `top_k` parameters. Debugging why "Pricing" documents are no longer returned for "Cost" queries.
+
+### 2. The Chunking War
+-   **Fixed Size:** Chop text every 500 characters. -> Breaks sentences. Loses context.
+-   **Semantic:** Use an LLM to chunk. -> Extremely expensive (double the inference cost).
+-   **Recursive:** The only sane middle ground, but complex to implement.
+
+## The Token Cost Calculator
+
+Let's do the math for a "Code Review Bot".
+
+| Step | Efficiency | Cost per PR |
+| :--- | :--- | :--- |
+| **Context Loading** | Reads all changed files + related imports (10k tokens) | $0.10 |
+| **Inference** | Generates 5 comments (500 tokens) | $0.03 |
+| **Re-tries** | JSON format error correction (2x) | $0.26 |
+| **Total** | **$0.39 per PR** | |
+
+**At Scale:**
+-   100 Devs * 5 PRs/day = 500 PRs/day.
+-   **$195/day** -> **$71,175 / year**.
+-   **Value:** 50% of the comments are "Add a docstring".
+-   **ROI:** Negative.
+
+> [!WARNING]
+> **The Context Window Trap:**
+> Just because Gemini/GPT-4 supports 1M token context windows doesn't mean you should use it. 
+> Stuffing 1M tokens costs **$10 per call**. If you put that in a loop, you will burn a Seed Round in a weekend.
+
+## Evaluation: LLM-as-a-Judge
+
+How do you know if your generic answer is "Better"?
+You don't. You need **LLM-as-a-Judge**.
+
+1.  **Golden Set:** Hand-write 100 perfect Q&A pairs.
+2.  **The Judge:** Use GPT-4 to grade your RAG output against the Golden Set on a 1-5 scale.
+3.  **CI/CD:** Run this evaluation on every Pull Request to the Prompt Engineering repo.
+
+If you are not running Eval CI, you are not doing Engineering. You are doing **Vibe Coding**.

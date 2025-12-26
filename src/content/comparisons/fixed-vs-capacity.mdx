@@ -1,0 +1,35 @@
+---
+title: "Fixed Bid vs Capacity"
+description: "The contract determines the code quality."
+---
+
+# Fixed Bid vs Capacity
+
+The biggest lie in software is "Fixed Price, Fixed Scope, Fixed Time, High Quality." Pick three (actually, pick two).
+
+## The Fixed Bid Trap
+**Client**: "I want to pay $100k for this app."
+**Vendor**: "Okay."
+**Reality**:
+- Halfway through, the requirements change.
+- Vendor runs out of budget.
+- **Result**: The vendor cuts corners. They stop writing tests. They use copy-paste code. They assign junior devs.
+- **End State**: You get feature-complete garbage that is unmaintainable.
+
+## The Capacity Model (T&M)
+**Client**: "I will pay for a team of 5 experts."
+**Vendor**: "Okay."
+**Reality**:
+- Incentives align. The team wants to keep the client happy to keep the contract.
+- Quality remains high because they have to live with the code next month.
+- **Risk**: The client must perform **Strong Product Management** to ensure the team isn't just burning cash.
+
+<DecisionMatrix
+  id="contract-model"
+  title="Contract Strategy"
+  factors={[
+    { name: "Scope Clarity", weight: 5, score: 2, note: "If vague, DO NOT perform Fixed Bid." },
+    { name: "Trust Level", weight: 4, score: 4, note: "Capacity requires trusting the partner." },
+    { name: "Budget Hard Cap", weight: 5, score: 5, note: "If you only have $50k, Fixed Bid is your only option (but expect technical debt)." }
+  ]}
+/>

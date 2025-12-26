@@ -1,0 +1,32 @@
+---
+title: "Tool vs Outcome"
+description: "Issue Tracker is not a process."
+---
+
+# Tool vs Outcome
+
+"We are agile because we use Issue Tracker."
+"We are DevOps because we use Jenkins."
+"We are Collaborative because we use Messaging App."
+
+## The Cargo Cult
+This is **Cargo Cult Engineering**. It mimics the artifacts of successful companies without understanding the underlying mechanisms.
+
+## Buying Capability
+Vendors sell tools as "Solutions".
+- Buying ServiceNow does not give you ITIL maturity. It gives you a form builder.
+- Buying Datadog does not give you Observability. It gives you a bill.
+
+## The Inverse Law of Tooling
+**The more complex the tool configuration, the less actual work is getting done.**
+If your Issue Tracker workflow has 15 states (Backlog -> Analyzed -> Ready -> In Dev -> Code Review -> QA -> UAT -> Done), you have built a **Bureaucracy Simulator**, not a delivery pipeline.
+
+<ComparisonTable
+  title="Tool Usage Realities"
+  headers={["Tool", "Intended Use", "Actual Abuse"]}
+  rows={[
+    ["Issue Tracker", "Track work", "Micro-manage time"],
+    ["Messaging App", "Async collaboration", "Interrupt mechanism"],
+    ["Confluence", "Knowledge Base", "Graveyard of outdated docs"]
+  ]}
+/>

@@ -1,0 +1,29 @@
+---
+title: "AI Test Generation: The Infinite Monkey Theorem"
+description: "Generating 1,000 bad tests is easier than writing 1 good test."
+author: "Sambath Kumar Natarajan"
+version: "1.0"
+---
+
+{/* Script: AI Test Generation: The Infinite Monkey Theorem */}
+
+# AI Test Generation: The Infinite Monkey Theorem
+
+## The Pitch
+"Use our AI to scan your website and generate 10,000 Cypress tests automatically!"
+
+## The Reality
+**Verification vs Validation.**
+-   AI acts verification: "Does the page load? Yes."
+-   AI fails validation: "Is this the right page? Who knows."
+
+## The "False Positive" Flood
+If you auto-generate tests based on the *current* state of the application, you are effectively **snapshotting bugs**.
+-   If the "Submit" button is broken (Red), the AI writes a test expecting it to be Red.
+-   When you fix it (Green), the test fails.
+
+## Where AI Actually Helps (Synthetic Data)
+Don't use AI to write tests. Use AI to generate **Test Data**.
+-   "Generate 50 realistic addresses in France with edge cases (accents, long streets)."
+-   "Generate a valid JSON payload for a booking with a date in the past."
+**AI is a fuzzing tool, not a QA Engineer.**

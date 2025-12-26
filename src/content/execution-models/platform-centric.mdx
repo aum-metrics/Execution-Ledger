@@ -1,0 +1,33 @@
+---
+title: "Platform-Centric Delivery"
+description: "Building the factory, not the car."
+author: "Sambath Kumar Natarajan"
+version: "1.0"
+---
+
+{/* Script: Platform-Centric Delivery */}
+
+# Platform-Centric Delivery
+
+The most mature organizations (Search Giants, Streaming Giants, eCommerce Giants) don't build "Applications". They build **Platforms** that enable autonomous teams to ship applications.
+
+## The Internal Developer Platform (IDP)
+Your goal is to reduce the "Cognitive Load" on stream-aligned teams.
+- **Before**: Dev needs to know Cloud Provider, K8s, Terraform, Jenkins, Security Groups.
+- **After**: Dev runs `npx create-service`, and the Platform handles the plumbing.
+
+## The Failure Mode: The "Platform Silo"
+We see this constantly:
+1.  Company creates a "Platform Team".
+2.  Platform Team goes into a cave for 12 months to build "The Perfect Kubernetes Abstraction".
+3.  They launch it.
+4.  **Nobody uses it** because it solves problems nobody had, and ignores the problems they actually have.
+
+> [!IMPORTANT]
+> Treat the Platform as a **Product**. Your developers are your **Customers**. If they don't buy (adopt) it voluntarily, your product failed. DO NOT MANDATE ADOPTION.
+
+## Evolution of a Platform
+1.  **Wiki-Based**: "Run these 50 commands."
+2.  **Script-Based**: "Run this `./deploy.sh`."
+3.  **Service-Based**: "Call this PI via Backstage."
+4.  **Invisible**: "Push to git, and we handle the rest."

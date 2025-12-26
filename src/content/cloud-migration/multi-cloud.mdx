@@ -1,0 +1,82 @@
+---
+title: "The Multi-Cloud Myth"
+description: "Resume-driven architecture at its finest."
+---
+
+# The Multi-Cloud Myth
+
+"We need to be cloud-agnostic to avoid vendor lock-in."
+This sounds smart. It is usually catastrophic.
+
+## The Lowest Common Denominator
+To run on both Cloud Provider and Cloud Provider, you cannot use:
+- Cloud Provider Lambda (Must use generic K8s)
+- DynamoDB (Must use generic Mongo/Postgres)
+- Aurora (Must use generic RDS)
+You strip away all the "Superpowers" of the cloud provider and treat them as dumb utility providers.
+**Result**: You pay the Cloud Premium price but get Commodity Data Center value.
+
+## The Talent Tax
+You essentially need two distinct engineering teams.
+- "I'm an Cloud Provider Expert."
+- "I'm an Cloud Provider Expert."
+Finding people who are experts in **both** networking stacks is impossible or expensive.
+
+<ComparisonTable
+  title="Single vs Multi Cloud"
+  headers={["Dimension", "Single Cloud", "Multi-Cloud"]}
+  rows={[
+    ["Discounts", "Maximized (Volume Tiering)", "Diluted (Split spend)"],
+    ["Complexity", "High", "Extreme (Abstraction Layers)"],
+    ["Leverage", "High (Vendor invests in you)", "Low (You are a disloyal customer)"]
+  ]}
+/>
+
+## Decision: Do you need Multi-Cloud?
+
+<InteractiveDecisionTree
+  steps={[
+    {
+      id: 'root',
+      question: 'Did a regulator (Gov/Finance) legally mandate multi-cloud redundancy?',
+      options: [
+        { label: 'Yes, it is the law', nextStep: 'compliance' },
+        { label: 'No, we just fear lock-in', nextStep: 'fear' }
+      ]
+    },
+    {
+      id: 'fear',
+      question: 'Do you spend more than $50M/year on cloud?',
+      options: [
+        { label: 'Yes, huge spend', nextStep: 'leverage' },
+        { label: 'No, < $10M', nextStep: 'complexity' }
+      ]
+    }
+  ]}
+  outcomes={[
+    {
+      id: 'compliance',
+      title: 'Go Multi-Cloud (Grudgingly)',
+      type: 'warning',
+      description: 'You have to do it. Build a heavy abstraction layer (Terraform/K8s) and accept the 20% "Compatibility Tax".',
+      risks: ['Lowest Common Denominator Features', 'Talent Split', 'Security Gaps'],
+      mitigation: ['Strict Terraform Modules', 'CNCF Standard Tools', 'Unified Identity Provider']
+    },
+    {
+      id: 'leverage',
+      title: 'Negotiate Harder',
+      type: 'success',
+      description: 'You are big enough to negotiate. Pick ONE primary cloud and use the threat of moving to get a 20% discount.',
+      risks: ['Bluff Called', 'Vendor Retaliation', 'Lock-in Anxiety'],
+      mitigation: ['Multi-year Enterprise Agreement', 'Executive Relationship', 'Portable Data Formats']
+    },
+    {
+      id: 'complexity',
+      title: 'Stay Single Cloud',
+      type: 'success',
+      description: 'You are not a Hyperscaler. The complexity of multi-cloud will hinder your velocity faster than vendor lock-in ever will.',
+      risks: ['Vendor Lock-in', 'Regional Outage', 'Price Hikes'],
+      mitigation: ['Multi-Region Architecture', 'Portable Container Design', 'Regular Price Audits']
+    }
+  ]}
+/>

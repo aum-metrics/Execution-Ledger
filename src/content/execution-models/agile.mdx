@@ -1,0 +1,54 @@
+---
+title: "Agile (Scrum, Kanban, SAFe)"
+description: "The industry standard for delivery that has been commoditized into a certification pyramid scheme."
+author: "Sambath Kumar Natarajan"
+version: "1.0"
+---
+
+{/* Script: Agile (Scrum, Kanban, SAFe) */}
+
+# Agile (Scrum, Kanban, SAFe)
+
+## The Reality Check
+Real Agile (The Manifesto) is rare. What exists in 90% of Fortune 500s is "Water-Scrum-Fall" or SAFe (Scaled Agile Framework), which is effectively Waterfall with more meetings. True Agile requires high talent density and trust; most orgs have neither.
+
+## Where This Works
+- **SaaS Products**: Continuous deployment and feedback loops are native here.
+- **Innovation Labs**: Where the goal is learning/discovery, not just output.
+- **Team-Funded Models**: Where teams are long-lived and funded by capacity, not project.
+
+## Where This Fails
+- **Low-Trust Environments**: If management demands a gantt chart for the next 12 months, Agile becomes a lie where teams make up story points to fit the deadline.
+- **Dependency Hell**: In highly coupled legacy architectures, one "Agile" team cannot move faster than the slowest mainframe dependency.
+
+## Why Companies Choose It
+1.  **Recruiting**: You cannot hire good engineers in 2025 if you say you do Waterfall.
+2.  **Market Pressure**: The need to release "something" every 2 weeks to show stakeholders momentum.
+
+## Why Companies Regret It
+They regret it when they realize **Agile exposes dysfunction, it doesn't fix it.** Without engineering excellence (CI/CD, auto-testing), Agile just means you ship bugs faster.
+
+## Execution Evidence
+
+<ComparisonTable
+  headers={["Aspect", "Agile (Theory)", "Enterprise Agile (Reality)"]}
+  rows={[
+    ["Planning", "Just-in-time", "PI Planning (Quarterly Waterfall)"],
+    ["Teams", "Self-organizing", "Manager-directed Issue Tracker movers"],
+    ["Customer", "Collaborative", "Proxy Product Owner who guesses"],
+    ["Velocity", "Used for capacity", "Used as a performance target"],
+  ]}
+/>
+
+## The "SAFe" Trap
+SAFe is often chosen by executives who want to *say* they are Agile without changing the command-and-control hierarchy. It adds layers that abstract the engineers further from the customer.
+
+## Decision Matrix
+
+<DecisionMatrix
+  data={[
+    { factor: "Culture Change", rating: "Extreme", reality: "Requires middle management to give up control." },
+    { factor: "Tooling Cost", rating: "Medium", reality: "Issue Tracker licenses are cheap; the bureaucracy is expensive." },
+    { factor: "Transparency", rating: "High", reality: "Everyone knows exactly what isn't working immediately." },
+  ]}
+/>

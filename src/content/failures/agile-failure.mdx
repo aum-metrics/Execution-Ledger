@@ -1,0 +1,83 @@
+---
+title: "Why SAFe Failed in a Bank Despite Executive Buy-in"
+description: "A postmortem of a $50M transformation that resulted in more meetings and fewer releases."
+---
+
+# Why SAFe Failed in a Bank Despite Executive Buy-in
+
+## The Setup
+A Top-10 Global Bank wanted to compete with Fintechs. The CIO hired a Big 4 consultancy to roll out SAFe (Scaled Agile Framework). They trained 5,000 people, renamed "Project Managers" to "Scrum Masters", and launched "Release Trains".
+
+## What Went Wrong
+1.  **Semantic Agile**: The teams were doing standups, but deployments were still tied to a quarterly release window on the mainframe.
+2.  **Dependency Gridlock**: PI Planning (Program Increment) revealed that every "feature" depended on the same 3 Shared Services teams (Security, Identity, Database), which were not part of the trains.
+3.  **The "Watermelon" Status**: Dashboards were Green (On Track) because teams marked "Story Completed" when code was written, not deployed. Real status was Red.
+
+## Early Warning Signs
+- **Proxy Product Owners**: The real business owners were too busy to attend meetings, so they sent delegates who couldn't make decisions.
+- **Hardening Sprints**: They added a 2-week "Stabilization" sprint at the end of every PI. This is just disguised Waterfall testing.
+
+## Decision Matrix: Anatomy of Failure
+
+<DecisionMatrix
+  data={[
+    { factor: "Leadership", rating: "High", reality: "CIO was committed, but Middle Management fought to keep control." },
+    { factor: "Tooling", rating: "Extreme", reality: "Issue Tracker became a compliance tool, not a work management tool." },
+    { factor: "Impact", rating: "Very Slow", reality: "Release cadence went from 4/year to... 4/year." },
+  ]}
+/>
+
+## What Winners Did Differently
+Capital One and JPMC succeeded by:
+1.  **In-Sourcing Engineering**: You cannot do Agile with 80% vendors.
+2.  **Cloud First**: They broke the infrastructure dependency before scaling the process.
+3.  **Product Funding**: They funded **value streams**, not projects.
+
+## Interactive Postmortem Analysis
+
+<InteractiveDecisionTree
+  steps={[
+    {
+      id: "root",
+      question: "Did you remove the release commitee?",
+      options: [
+        { label: "No, they still approve everything.", outcome: "fail" },
+        { label: "Yes, teams deploy on demand.", nextStep: "audit" },
+      ]
+    },
+    {
+      id: "audit",
+      question: "How does Audit verify compliance?",
+      options: [
+        { label: "Automated via CI/CD pipelines.", outcome: "success" },
+        { label: "Screenshots in Word docs.", outcome: "friction" },
+      ]
+    }
+  ]}
+  outcomes={[
+    {
+      id: "fail",
+      title: "Transformation Theatre",
+      type: "danger",
+      recommendation: "If a committee decides when to ship, the teams are not accountable. You have rebranded Waterfall.",
+      risks: ["Talent exodus", "No speed gain"],
+      mitigation: ["Automate policy enforcement", "Disband the committee"]
+    },
+    {
+      id: "friction",
+      title: "Agile with Handbrakes",
+      type: "warning",
+      recommendation: "Manual compliance kills velocity. Engineers hate taking screenshots.",
+      risks: ["Developer burnout", "Docs drift from reality"],
+      mitigation: ["Invest in Oscal / Automated Governance"]
+    },
+    {
+      id: "success",
+      title: "True DevOps",
+      type: "success",
+      recommendation: "This is the holy grail. Compliance is code. Developers move fast safely.",
+      risks: ["Complexity"],
+      mitigation: ["Platform Engineering Team"]
+    }
+  ]}
+/>

@@ -1,0 +1,28 @@
+---
+title: "The Three Pillars"
+description: "Logs, Metrics, Traces. And why they are not enough."
+---
+
+# The Three Pillars
+
+The marketing brochure says you need Logs, Metrics, and Traces to have "Observability".
+
+## 1. Metrics (The "What")
+- **Aggregates**. Low cardinality. fast.
+- "CPU is high." "Error rate is 5%."
+- **Problem**: You lose the detail. You see the spike, but not the user who caused it.
+
+## 2. Logs (The "Why" Context)
+- **Events**. High volume. expensive.
+- "User 123 failed login with Exception X."
+- **Problem**: Too much noise. Searching "Exception" returns 50,000 hits.
+
+## 3. Traces (The "Where")
+- **Requests**. The path through microservices.
+- "Service A called Service B which timed out."
+- **Problem**: Sampling. You usually only capture 1% of traces because keeping 100% is too expensive.
+
+## The Missing Pillar: Correlation
+Having these 3 in separate tools (Splunk for logs, Datadog for metrics, Jaeger for traces) is **useless**.
+Real Observability is the ability to click a spike in the Metric, see the Trace for that spike, and read the Logs for that trace ID.
+**Context is King.**

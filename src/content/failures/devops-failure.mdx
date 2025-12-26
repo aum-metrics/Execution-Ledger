@@ -1,0 +1,80 @@
+---
+title: "DevOps Without Product Ownership: A Postmortem"
+description: "We built the pipeline, but nobody knew what to put in it."
+---
+
+# DevOps Without Product Ownership: A Postmortem
+
+## The Setup
+A Logistics giant decided to "do DevOps". They built a world-class Kubernetes platform, hired strict SREs, and automated every deployment. The "How" was perfect. The "What" was missing.
+
+## What Went Wrong
+1.  **The "Platform" Silo**: The Platform team built tools that the Product teams didn't understand and didn't ask for.
+2.  **Ghost Products**: Developers pushed code fast, but because Product Managers weren't involved in the feedback loop, they pushed the *wrong* features fast.
+3.  **On-Call Mutiny**: Developers were told "You build it, you run it", but they weren't given the authority to prioritize technical debt fix. They burned out.
+
+## Early Warning Signs
+- **Ticket Throwing**: The Platform team demanded tickets to whitelist IPs, effectively becoming a new SysAdmin silo.
+- **Shadow IT**: Product teams secretly spun up Cloud Provider accounts to bypass the "Official Platform" because it was too rigid.
+
+## Decision Matrix: Why it Stalled
+
+<DecisionMatrix
+  data={[
+    { factor: "Tech Excellence", rating: "High", reality: "The Kubernetes clusters were immaculate." },
+    { factor: "User Value", rating: "Low", reality: "Features didn't land any faster for the customer." },
+    { factor: "Morale", rating: "Low", reality: "SREs hated the Devs; Devs hated the Platform." },
+  ]}
+/>
+
+## What Winners Did Differently
+Companies like Music Streaming Giants/Streaming Giants understand that **internal developer platforms (IDP)** must be treated as a product. The Platform team's metrics should be "Developer Net Promoter Score", not just "Uptime".
+
+## Interactive Postmortem Analysis
+
+<InteractiveDecisionTree
+  steps={[
+    {
+      id: "root",
+      question: "Do Product teams treat the Platform as a product they *choose* to use?",
+      options: [
+        { label: "No, it's mandated.", outcome: "mandate" },
+        { label: "Yes, it solves their problems.", nextStep: "feedback" },
+      ]
+    },
+    {
+      id: "feedback",
+      question: "Does the Platform team have a roadmap driven by Dev needs?",
+      options: [
+        { label: "Yes", outcome: "success" },
+        { label: "No, they build what is cool.", outcome: "resume" },
+      ]
+    }
+  ]}
+  outcomes={[
+    {
+      id: "mandate",
+      title: "The Mandate Trap",
+      type: "danger",
+      recommendation: "Mandating a bad platform creates Shadow IT. Adoption must be earned.",
+      risks: ["Lack of adoption", "Resentment"],
+      mitigation: ["Treat Platform as Product", "Hire a TPM"]
+    },
+    {
+      id: "resume",
+      title: "Resume Driven Development",
+      type: "warning",
+      recommendation: "Engineers love building complex clusters. Ensure they are solving business problems, not just playing with tech.",
+      risks: ["Over-engineering", "Cost explosion"],
+      mitigation: ["Tie platform goals to business KPIs"]
+    },
+    {
+      id: "success",
+      title: "Golden Path",
+      type: "success",
+      recommendation: "The Platform provides a 'Golden Path' that is the easiest way to ship. Devs follow it because it helps them.",
+      risks: ["Maintenance"],
+      mitigation: ["InnerSource"]
+    }
+  ]}
+/>

@@ -1,0 +1,33 @@
+---
+title: "The Test Pyramid vs The Ice Cream Cone"
+description: "Why your test suite is slow, flaky, and expensive."
+author: "Sambath Kumar Natarajan"
+version: "1.0"
+---
+
+{/* Script: The Test Pyramid vs The Ice Cream Cone */}
+
+# The Test Pyramid vs The Ice Cream Cone
+
+## The Ideal (The Pyramid)
+Proposed by tracking Mike Cohn.
+-   **70% Unit Tests:** Fast (ms). Deterministic. Cheap.
+-   **20% Integration:** Test db/api boundaries. Slower (s).
+-   **10% E2E (UI):** Test user flows. Slow (m). Flaky. Expensive.
+
+## The Reality (The Ice Cream Cone)
+Most organizations have:
+-   **0% Unit:** "Too hard to mock things."
+-   **10% Integration:** "We don't have environments."
+-   **90% E2E (Selenium/Cypress):** "Just record what the user does."
+
+## Why The Cone Kills Velocity
+1.  **Flakiness:** E2E tests fail 10% of the time due to network bloops, not bugs.
+2.  **Duration:** A suite of 500 Selenium tests takes 4 hours. Developers stop running them.
+3.  **Debugging:** When an E2E test fails, you know "It didn't click the button," but you don't know *why*.
+
+## The Fix: Invert the Pyramid
+**Delete your E2E tests.**
+-   Radical? Yes.
+-   If a test is flaky, it provides **negative value**. It erodes trust.
+-   Replace 1 E2E test with 20 Unit tests and 2 Integration tests.

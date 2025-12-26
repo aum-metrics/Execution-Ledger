@@ -1,0 +1,24 @@
+---
+title: "Prompt Debt"
+description: "The new Technical Debt is natural language."
+---
+
+# Prompt Debt
+
+We used to have messy code. Now we have messy prompts.
+
+## The Problem
+You build a complex system based on a specific prompt structure:
+`"You are a helpful assistant. Output JSON only. Use this schema..."`
+
+2 months later, you upgrade the model (GPT-4 to GPT-5), or the provider changes the model weights silently.
+Suddenly, your prompts stop working. The JSON output is malformed. The tone is wrong.
+
+## Why it's Dangerous
+**Code is deterministic.** `if (a > b)` is always true.
+**Prompts are probabilistic.** There is no guarantee the output will be the same twice.
+
+## Mitigation Strategies
+1.  **Eval Frameworks**: You need automated tests for your prompts. Run them against 100 test cases to measure "Drift".
+2.  **Version Control**: Prompts are code. Store them in Git, not in database columns or UI configs.
+3.  **Defensive Parsing**: Never trust the LLM output. Always wrap it in a strict parser (like Zod) that throws errors if the structure is wrong.

@@ -1,0 +1,30 @@
+---
+title: "Automation ROI Myths"
+description: "Why '100% Automation' is a misguided goal."
+author: "Sambath Kumar Natarajan"
+version: "1.0"
+---
+
+{/* Script: Automation ROI Myths */}
+
+# Automation ROI Myths
+
+## The "Automate Everything" Trap
+A VP reads a blog post and mandates: "All tests must be automated."
+**Result:** You spend $100 to automate a test that would cost $1 to run manually once a year.
+
+## The Law of Diminishing Returns
+-   **Smoke Tests (Login, Checkout):** High ROI. Run on every commit.
+-   **Regression Suite:** Medium ROI. Run nightly.
+-   **Corner Cases (IE11 + Zoom to 200%):** Negative ROI. Automating this takes 3 days and breaks every week.
+
+## Automated != Maintained
+Code is liability. Test code is **double liability**.
+-   Every automated test requires maintenance when the UI changes.
+-   If you have 2,000 UI tests, you need 2 Full-Time Engineers just to keep the suite green.
+
+## The 80/20 Rule
+Automate the **Critical Path** (80% of usage / 20% of flows).
+Leave the rest to:
+1.  **Manual Exploratory Testing:** Humans find "weird" bugs. Scripts only find "expected" bugs.
+2.  **Bug Bounties:** Cheaper than internal QA for security.

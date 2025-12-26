@@ -1,0 +1,35 @@
+---
+title: "Agile vs Hybrid in Telecom"
+description: "Why you can't A/B test a cell tower."
+---
+
+# Agile vs Hybrid in Telecom
+
+Silicon Valley startups often criticize Telecoms for being slow. But Social Media Giants doesn't have to trench fiber across the Atlantic.
+
+## The Physical Constraint
+In pure software (SaaS), the cost of deployment is zero.
+In Telecom (OSS/BSS), code drives hardware.
+- **Scenario**: You want to update the router firmware.
+- **Agile View**: "Deploy it, if it fails, roll back."
+- **Reality**: If the update bricks the router, you have to send a truck to a tower in rural Nebraska. Truck rolls cost $1,000.
+
+## The Hybrid Survival Model
+Telecoms use **Agile for the BSS** (Billing, Customer App) and **Waterfall/V-Model for the OSS** (Network implementation).
+
+<DecisionMatrix
+  id="telecom-model"
+  title="Hybrid Strategy"
+  factors={[
+    { name: "Safety Critical", weight: 5, score: 5, note: "If 911 goes down, people die." },
+    { name: "Reversibility", weight: 5, score: 1, note: " Hardware changes are hard to reverse." },
+    { name: "User Interface", weight: 2, score: 5, note: "The mobile app should update weekly." }
+  ]}
+/>
+
+## The "Digital Transformation" Lie
+Consultants sell "Full Agile Transformation" to Telcos. It always fails.
+The correct approach is **Bimodal IT**:
+- Mode 1 (Network Core): Stable, slow, rigorous.
+- Mode 2 (Digital Overlay): Fast, experimental.
+The failure happens when you try to run Mode 1 like Mode 2.

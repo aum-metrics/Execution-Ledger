@@ -1,26 +1,55 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 :root {
+  /* STRICT HIGH CONTRAST LIGHT MODE */
   --background: #ffffff;
-  --foreground: #171717;
-}
+  --foreground: #000000;
+  --muted-foreground: #404040;
+  --border: #e5e5e5;
+  --accent: #f5f5f5;
+  --accent-foreground: #000000;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* Force these values to never change */
+  color-scheme: light;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Sidebar Specific overrides */
+nav {
+  background-color: #fcfcfc !important;
+  border-right: 1px solid var(--border);
+}
+
+/* Typography Overrides - FORCE BLACK */
+.prose {
+  --tw-prose-body: #000000;
+  --tw-prose-headings: #000000;
+  --tw-prose-lead: #404040;
+  --tw-prose-links: #000000;
+  --tw-prose-bold: #000000;
+  --tw-prose-counters: #404040;
+  --tw-prose-bullets: #000000;
+  --tw-prose-hr: #e5e5e5;
+  --tw-prose-quotes: #000000;
+  --tw-prose-quote-borders: #000000;
+  --tw-prose-captions: #404040;
+  --tw-prose-code: #000000;
+  --tw-prose-pre-code: #e5e5e5;
+  --tw-prose-pre-bg: #171717;
+  /* Code blocks stay dark for contrast? Or inverted? User said BLACK font. Keep code blocks dark for readability usually, but let's check execution */
+  --tw-prose-th-borders: #e5e5e5;
+  --tw-prose-td-borders: #e5e5e5;
+}
+
+/* Custom Utilities */
+.reality-border {
+  border: 1px solid var(--border);
 }

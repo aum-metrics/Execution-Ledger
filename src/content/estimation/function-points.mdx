@@ -1,0 +1,45 @@
+---
+title: "Function Point Analysis: The Lost Art"
+description: "Why 'Scientific' estimation died, and why you might need it back."
+author: "Sambath Kumar Natarajan"
+version: "1.0"
+---
+
+{/* Script: Function Point Analysis (FPA): The Lost Art */}
+
+# Function Point Analysis (FPA): The Lost Art
+
+## The "Science" of Estimation
+
+Before Agile gave us "Story Points" (which are basically feelings converted into Fibonacci numbers), there was **Function Point Analysis (ISO/IEC 20926)**.
+
+### How It Works
+You don't guess complexity. You count inputs and outputs.
+1.  **External Inputs (EI):** Forms, screens, API receivers.
+2.  **External Outputs (EO):** Reports, API responses.
+3.  **Internal Logical Files (ILF):** Database tables, cache stores.
+4.  **External Interface Files (EIF):** Reference data from other systems.
+
+**Formula:** `FP = Count * Complexity_Weight`
+
+## Why It Died
+1.  **Too Slow:** Counting FPs takes hours. Agile moves in minutes.
+2.  **Subjectivity:** Is that "Customer Table" one logical file or three (Customer, Address, Preference)?
+3.  **The API Shift:** Modern microservices have 100x more "External Interfaces" than 1990s monoliths, inflating the count wildly.
+
+## Why You Miss It
+**Story Points are inflation-prone currency.**
+-   Team A's "5 points" is Team B's "13 points".
+-   You cannot benchmark productivity across teams.
+
+**Function Points were the Gold Standard.**
+-   "This project is 500 FPs." is a meaningful statement to a CFO.
+-   "This project is 500 Story Points" implies nothing about value delivered.
+
+## The Consultant's Take
+Don't use full IFPUG standards. Use **"Lightweight FPA"**:
+1.  Count **Screens** (UI).
+2.  Count **API Endpoints** (Integration).
+3.  Count **Tables** (Storage).
+
+If Team A delivers 5 Screens per sprint and Team B delivers 1, no amount of "Story Point" math can hide the productivity gap.

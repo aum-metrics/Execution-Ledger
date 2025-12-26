@@ -1,0 +1,24 @@
+---
+title: "Human in the Loop"
+description: "The fallback safety net."
+---
+
+# Human in the Loop (HITL)
+
+Until AGI arrives, critical decisions require a human signature.
+But HITL strategies are often designed poorly.
+
+## The "Rubber Stamp" Problem
+If the AI is right 99% of the time, the human operator stops paying attention.
+They just click "Approve" "Approve" "Approve".
+When the 1% fatal error comes, they click "Approve" out of muscle memory.
+**Fix**: Inject "Gold Standard" fake bad cases into the queue to keep the human awake. If they approve a fake bad case, lock their account and retrain.
+
+## Workflow Design
+- **Low Confidence**: Send to Human Queue.
+- **High Confidence**: Auto-execute (but sample 5% for audit).
+- **Disagreement**: If Human rejects AI, feed that data back into the retraining set immediately. This is your "Data Flywheel".
+
+## The Reviewer UI
+Don't just show the output. Show the **reasoning/citation**.
+The human needs to verify the *source*, not just the summary.

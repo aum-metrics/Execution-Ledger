@@ -1,0 +1,79 @@
+---
+title: "AI Productivity Gains That Vanished After 6 Months"
+description: "We bought Copilot for everyone. We expected 30% speed. We got bugs."
+---
+
+# AI Productivity Gains That Vanished After 6 Months
+
+## The Setup
+A Healthcare SaaS provided Code Repository Copilot to all 200 engineers. Initial surveys showed "happiness" spikes. The CTO promised the Board a 30% increase in feature throughput.
+
+## What Went Wrong
+1.  **The Code/Review Imbalance**: Junior devs generated code 5x faster. Senior devs (Senior/Principal) spent 5x longer reviewing it because the AI code looked plausible but had subtle edge-case bugs.
+2.  **Prompt Debt**: The codebase became filled with verbose, AI-style boilerplate function comments that drifted from the actual logic.
+3.  **The "Learning Cliff"**: Junior devs stopped reading documentation. When the AI hallucinated an API method that didn't exist, they were stuck for days.
+
+## Decision Matrix: The AI Trap
+
+<DecisionMatrix
+  data={[
+    { factor: "Lines of Code", rating: "Extreme", reality: "Went up 40%. This is BAD. More code = more liability." },
+    { factor: "Bug Density", rating: "High", reality: "Bugs per feature increased because AI doesn't understand cross-file context." },
+    { factor: "Senior Burnout", rating: "High", reality: "Seniors became full-time janitors for AI-generated code." },
+  ]}
+/>
+
+## What Winners Did Differently
+Successful AI adopters:
+1.  **Restricted AI to Boilerplate**: Used it for unit tests and types, not core business logic.
+2.  **Enforced Smaller PRs**: AI encourages "Mega PRs". They forced a limit of 200 lines to ensure human reviewability.
+3.  **Measuring Outcomes, Not Output**: They measured "features shipped per month", not "commits per day".
+
+## Interactive Postmortem Analysis
+
+<InteractiveDecisionTree
+  steps={[
+    {
+      id: "root",
+      question: "Are your Senior Engineers reviewing more code than they write?",
+      options: [
+        { label: "Yes, they are overwhelmed.", outcome: "bottleneck" },
+        { label: "No, review load is stable.", nextStep: "tests" },
+      ]
+    },
+    {
+      id: "tests",
+      question: "Has your test coverage increased alongside code volume?",
+      options: [
+        { label: "Yes, AI writes tests too.", outcome: "success" },
+        { label: "No, just more feature code.", outcome: "debt" },
+      ]
+    }
+  ]}
+  outcomes={[
+    {
+      id: "bottleneck",
+      title: "Review Bottleneck",
+      type: "danger",
+      recommendation: "You have shifted the bottleneck to the most expensive resource (Senior Devs). Disable AI for juniors until they prove competency.",
+      risks: ["Attrition of Seniors"],
+      mitigation: ["Limit AI usage", "Pair programming"]
+    },
+    {
+      id: "debt",
+      title: "Technical Inflation",
+      type: "warning",
+      recommendation: "You are printing money (code) without backing (tests). This causes hyper-inflation of technical debt.",
+      risks: ["Unmaintainable legacy"],
+      mitigation: ["Strict coverage gates"]
+    },
+    {
+      id: "success",
+      title: "Augmented Engineering",
+      type: "success",
+      recommendation: "AI is acting as a force multiplier for mundane tasks, freeing humans for design.",
+      risks: ["Complacency"],
+      mitigation: ["Rotation on manual coding"]
+    }
+  ]}
+/>

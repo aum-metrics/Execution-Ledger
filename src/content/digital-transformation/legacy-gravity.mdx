@@ -1,0 +1,23 @@
+---
+title: "Legacy Gravity"
+description: "Why the mainframe always wins."
+---
+
+# Legacy Gravity
+
+Every Digital Transformation pitch deck starts with "We will migrate off the monolith."
+Five years and $50M later, the monolith is still there, but now it has a REST API wrapper.
+
+## The Physics of Code
+The more data a system holds, the more gravity it exerts.
+- **Data Gravity**: Applications move to where the data is. You can't put a microservice in Cloud Provider if the customer record is in a DB2 on-prem.
+- **Risk Gravity**: The system that processes revenue is the system nobody wants to touch.
+
+## The Strangler Fig Pattern Failures
+Martin Fowler's "Strangler Fig" pattern (slowly replacing pieces) is the correct theory.
+In practice, it fails because:
+1.  **Dual Maintenance**: You have to support both systems for years.
+2.  **Feature Parity Chase**: The legacy system keeps getting new features (regulatory/business critical), so the new system never catches up.
+
+> [!WARNING]
+> Do not start a transformation unless you are willing to **Stop All Feature Work** on the legacy system. Most executives are not brave enough to do this.

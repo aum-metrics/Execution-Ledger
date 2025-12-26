@@ -1,0 +1,30 @@
+---
+title: "Alert Fatigue"
+description: "If everything is urgent, nothing is."
+---
+
+# Alert Fatigue
+
+Sunday, 3:00 AM. PagerDuty fires.
+"CPU usage > 80% on worker-node-45."
+You wake up, check the graph. It dropped back to 70%. You go back to sleep.
+
+## The Boy Who Cried Wolf
+This is the most dangerous state for an operations team.
+When 90% of alerts are "noise" or "self-healing", the operator ignores the 10% that are real signals of catastrophic failure.
+
+## The Rule of Actionable Alerts
+Every alert must meet criteria:
+1.  **Is a user affected?** (If CPU is 90% but Latency is 20ms, nobody cares. Do not alert).
+2.  **Is human intervention required?** (If the auto-scaler handles it, do not alert).
+3.  **Do I know what to do?** (An alert saying "Unknown Error" usually just stresses people out).
+
+<DecisionMatrix
+  id="alert-rules"
+  title="Shut down the noise"
+  factors={[
+    { name: "Symptom-based", weight: 5, score: 5, note: "Alert on Latency/Errors (User Pain)" },
+    { name: "Cause-based", weight: 5, score: 1, note: "Don't alert on CPU/Disk (Implementation Detail)" },
+    { name: "Sleep-friendliness", weight: 3, score: 5, note: "Can it wait until morning?" }
+  ]}
+/>

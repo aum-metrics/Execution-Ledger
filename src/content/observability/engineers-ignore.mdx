@@ -1,0 +1,28 @@
+---
+title: "Why Engineers Ignore Alerts"
+description: "The sound of silence is better than the sound of false alarms."
+---
+
+# Why Engineers Ignore Alerts
+
+You spent $200k on Datadog/NewRelic.
+Your engineers created 500 alerts.
+Now, they have created an email rule to auto-archive all alerts.
+
+## The Signal-to-Noise Ratio
+If I get woken up at 3 AM for a "Low Disk Space" warning on a temp folder, and I do nothing and go back to sleep...
+I have trained my brain that **PagerDuty = Annoyance**, not **Danger**.
+
+## Flappy Alerts
+An alert that fires, resolves itself in 2 minutes, and fires again 10 minutes later.
+This is psychological torture.
+**Fix**: Implement "Hysteresis" (Must be broken for >5 minutes to alert) or "Holt-Winters" prediction (Anomaly detection) rather than static thresholds.
+
+## No Runbooks
+An alert fires: "Error Code 5432".
+The engineer stares at it. "What does that mean?"
+Every alert MUST link to a specific Playbook:
+1.  What impact does this have?
+2.  How to verify it?
+3.  How to mitigate (restart X, rollback Y)?
+If you don't know the playbook, do not create the alert. Log it instead.

@@ -1,0 +1,94 @@
+---
+title: "The Lift and Shift Trap"
+description: "Why moving your mess to the cloud just makes it an expensive mess."
+---
+
+# The Lift and Shift Trap (Rehost)
+
+"We will move to the cloud first, and optimize later."
+**Narrator**: They never optimized later.
+
+## The Economics
+- **On-Prem**: You pay for **Capacity** (Peak load). You bought the server, running it at 10% or 100% costs the same (electricity).
+- **Cloud**: You pay for **Usage**.
+If you take a server designed for Peak Capacity and run it 24/7 in the cloud, you are paying a premium for capacity you aren't using.
+
+## The "Cloud Native" Gap
+Cloud savings only come from **Elasticity** (Turning things off).
+Legacy apps don't know how to turn off. They allow stateful connections, local file storage, and hardcoded IPs.
+To get savings, you must **Refactor** (rewrite code), not just move VMs.
+
+<DecisionMatrix
+  id="migration-strategy"
+  title="Migration Strategy"
+  factors={[
+    { name: "Code Access", weight: 5, score: 1, note: "If you can't edit the code, you can't be cloud native." },
+    { name: "Traffic Variance", weight: 4, score: 5, note: "If traffic is flat, stay on-prem. Cloud is for spikes." },
+    { name: "OpEx Preference", weight: 3, score: 5, note: "Does CFO prefer monthly bills over CapEx depreciation?" }
+  ]}
+/>
+
+## Interactive Decision: Should you Lift & Shift?
+
+<InteractiveDecisionTree
+  steps={[
+    {
+      id: 'root',
+      question: 'Do you have the source code and ability to rewrite the app?',
+      options: [
+        { label: 'Yes, we can refactor', nextStep: 'traffic' },
+        { label: 'No, it is a black box vendor app', nextStep: 'vendor_legacy' }
+      ]
+    },
+    {
+      id: 'vendor_legacy',
+      question: 'Is the data center lease expiring immediately?',
+      options: [
+        { label: 'Yes, we must move now', nextStep: 'lift_shift' },
+        { label: 'No, we have time', nextStep: 'replace' }
+      ]
+    },
+    {
+      id: 'traffic',
+      question: 'Is your traffic highly variable (spiky)?',
+      options: [
+        { label: 'Yes, Black Friday spikes', nextStep: 'cloud_native' },
+        { label: 'No, steady state 24/7', nextStep: 'private_cloud' }
+      ]
+    }
+  ]}
+  outcomes={[
+    {
+      id: 'lift_shift',
+      title: 'Lift & Shift (Prepare to Pay)',
+      type: 'danger',
+      description: 'You have no choice but to move. Expect costs to rise 30%. Buy Reserved Instances immediately.',
+      risks: ['30-50% Cost Increase', 'No Agility Gain', 'Performance Issues (Latency)'],
+      mitigation: ['Buy 3-year Reserved Instances', 'Right-size VMs before moving', 'Plan Refactoring Phase immediately']
+    },
+    {
+      id: 'replace',
+      title: 'Repurchase (SaaS)',
+      type: 'success',
+      description: 'Do not move the legacy app. Replace it with a modern SaaS alternative (e.g., Salesforce, Workday).',
+      risks: ['Data Migration Complexity', 'Process Change Resistance', 'Feature Parity Gaps'],
+      mitigation: ['Detailed Data Mapping', 'Change Management Program', 'Accept Standard Processes']
+    },
+    {
+      id: 'cloud_native',
+      title: 'Refactor (Cloud Native)',
+      type: 'success',
+      description: 'Rewrite the app to cause containers/serverless. You will save money.',
+      risks: ['Long Migration Time', 'High Skill Requirement', 'Business Disruption'],
+      mitigation: ['Strangler Fig Pattern', 'Hire Cloud Architects', 'Automated Testing Suite']
+    },
+    {
+      id: 'private_cloud',
+      title: 'Retain / Coloc',
+      type: 'warning',
+      description: 'For steady workloads, renting a rack in a colo is cheaper than Cloud Provider EC2.',
+      risks: ['Hardware Maintenance', 'Scaling Limits', 'Talent Retention'],
+      mitigation: ['Managed Colocation Services', 'Hybrid Cloud Connectivity', 'Containerize on-prem']
+    }
+  ]}
+/>
