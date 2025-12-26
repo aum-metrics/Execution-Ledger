@@ -27,7 +27,6 @@ export const navigation: NavItem[] = [
       { title: "Function Point Analysis", href: "/estimation/function-points" },
       { title: "Story Pointing", href: "/estimation/story-points" },
       { title: "T-Shirt Sizing", href: "/estimation/t-shirt" },
-      { title: "COCOMO", href: "/estimation/cocomo" },
       { title: "AI-based Estimation", href: "/estimation/ai-based" },
       { title: "Rolling Wave Planning", href: "/estimation/rolling-wave" },
       { title: "Fixed Bid vs Capacity", href: "/estimation/fixed-vs-capacity" },

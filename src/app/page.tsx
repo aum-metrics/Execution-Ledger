@@ -10,7 +10,7 @@ export default function Home() {
           A practical platform exploring how software is actually built, why it fails, and how teams recover and scale.
         </p>
         <p className="text-base leading-7 text-zinc-700">
-          Authored by Sambath Kumar Natarajan. After years of leading teams, I wanted to understand the "physics" of software execution—so I built this to document what I learned.
+          Authored by Sambath Kumar Natarajan. After years of leading teams along with delivery execution—so I built this to document what I learned.
         </p>
       </div>
 
