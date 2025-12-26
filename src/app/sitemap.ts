@@ -1,32 +1,30 @@
 import { MetadataRoute } from 'next';
 import { getAllSlugParams } from '@/lib/content';
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-    const allRoutes = getAllSlugParams();
+export default function sitemap(): MetadataRoute.Sitemap {
+    const baseUrl = 'https://execution-ledger.com'; // Replace with actual domain if known, otherwise use a placeholder
 
-    // Base URL (Change this to your custom domain later)
-    const baseUrl = 'https://execution-ledger.vercel.app';
-
-    const routes = allRoutes.map((route) => ({
-        url: `${baseUrl}/${route.slug.join('/')}`,
-        lastModified: new Date(),
-        changeFrequency: 'monthly' as const,
-        priority: 0.8,
+    // Static pages
+    const routes = [
+        '',
+        '/consultant',
+    ].map((route) => ({
+        url: `${baseUrl}${route}`,
+        lastModified: new Date().toISOString(),
+        changeFrequency: 'weekly' as const,
+        priority: 1.0,
     }));
 
-    return [
-        {
-            url: baseUrl,
-            lastModified: new Date(),
-            changeFrequency: 'yearly',
-            priority: 1,
-        },
-        {
-            url: `${baseUrl}/consultant`,
-            lastModified: new Date(),
-            changeFrequency: 'monthly',
-            priority: 0.9,
-        },
-        ...routes,
-    ];
+    // Dynamic content pages
+    const contentRoutes = getAllSlugParams().map(({ slug }) => {
+        const path = slug.join('/');
+        return {
+            url: `${baseUrl}/${path}`,
+            lastModified: new Date().toISOString(),
+            changeFrequency: 'weekly' as const,
+            priority: 0.8,
+        };
+    });
+
+    return [...routes, ...contentRoutes];
 }
