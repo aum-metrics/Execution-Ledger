@@ -6,9 +6,11 @@ export default function Home() {
   return (
     <div className="space-y-16 py-12">
       <div className="space-y-4 max-w-2xl">
-
         <p className="text-xl leading-8 text-black font-medium">
-          This is not a theory blog. It is a reality-first platform explaining how software is actually built, fails, recovers, and scales.
+          A practical platform exploring how software is actually built, why it fails, and how teams recover and scale.
+        </p>
+        <p className="text-base leading-7 text-zinc-700">
+          Built by Sambath Kumar Natarajan, EMBA candidate at DoMS IIT Madras. After years of leading teams, I wanted to understand the "physics" of software execution—so I built this to document what I learned.
         </p>
       </div>
 
@@ -50,15 +52,15 @@ export default function Home() {
         ))}
       </div>
 
-      <div className="border-2 border-red-200 bg-red-50 p-8 rounded-lg mt-12">
-        <h3 className="text-red-700 font-bold text-sm uppercase tracking-wider mb-4">
-          Platform Rules
+      <div className="border-2 border-indigo-200 bg-indigo-50 p-8 rounded-lg mt-12">
+        <h3 className="text-indigo-700 font-bold text-sm uppercase tracking-wider mb-4">
+          What You'll Find Here
         </h3>
         <ul className="list-disc list-inside space-y-2 text-zinc-900 font-medium">
-          <li>No motivational fluff.</li>
-          <li>No textbook definitions.</li>
-          <li>No consulting jargon without explanation.</li>
-          <li>Every decision has consequences.</li>
+          <li>Real-world examples over theoretical frameworks</li>
+          <li>Practical insights from actual projects</li>
+          <li>Clear explanations without unnecessary jargon</li>
+          <li>Honest discussions about trade-offs and consequences</li>
         </ul>
       </div>
     </div>

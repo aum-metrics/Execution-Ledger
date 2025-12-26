@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: 'Execution Ledger',
-  description: 'A reality-first platform about software delivery.',
+  description: 'A practical platform exploring how software is built, why it fails, and how teams recover.',
   icons: {
     icon: '/icon.png?v=4',
     shortcut: '/favicon.ico?v=4',
@@ -47,12 +47,11 @@ export default function RootLayout({
                   Connect on LinkedIn
                 </a>
               </div>
-              <p className="mb-2">© 2025 Execution Ledger. Authored by Sambath Kumar Natarajan.</p>
+              <p className="mb-2">© 2025 Execution Ledger. Built by Sambath Kumar Natarajan, EMBA candidate at DoMS IIT Madras.</p>
               <p className="max-w-2xl mx-auto text-xs text-zinc-300">
-                DISCLAIMER: This platform is a simulation and educational resource for software architecture and delivery.
-                The scenarios, metrics, and outcomes are modeled based on industry patterns but should not be taken as
-                specific financial or technical advice for your organization. All "Deep Reality" scenarios are fictionalized
-                aggregates of common enterprise challenges.
+                This platform is an educational resource for understanding software architecture and delivery.
+                The scenarios and examples are based on common industry patterns and should be used as learning tools
+                rather than specific recommendations for your organization.
               </p>
             </footer>
           </div>
