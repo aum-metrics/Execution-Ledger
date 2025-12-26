@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import { Analytics } from "@vercel/analytics/react";
 import './globals.css';
 import { Sidebar } from '@/components/Sidebar';
+import { MobileNav } from '@/components/MobileNav';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -37,8 +38,9 @@ export default function RootLayout({
         suppressHydrationWarning
         className={`${geistSans.variable} ${geistMono.variable} antialiased h-full flex bg-white text-black`}
       >
+        <MobileNav />
         <Sidebar />
-        <main className="flex-1 overflow-y-auto h-full bg-white">
+        <main className="flex-1 overflow-y-auto h-full bg-white pt-16 lg:pt-0">
           <div className="max-w-4xl mx-auto p-8 lg:p-12">
             {children}
             <footer className="mt-20 pt-8 border-t border-zinc-100 text-center text-zinc-400 text-sm pb-8">
