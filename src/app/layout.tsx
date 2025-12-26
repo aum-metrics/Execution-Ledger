@@ -47,7 +47,7 @@ export default function RootLayout({
                   Connect on LinkedIn
                 </a>
               </div>
-              <p className="mb-2">© 2025 Execution Ledger. Built by Sambath Kumar Natarajan, EMBA candidate at DoMS IIT Madras.</p>
+              <p className="mb-2">© 2025 Execution Ledger. Authored by Sambath Kumar Natarajan.</p>
               <p className="max-w-2xl mx-auto text-xs text-zinc-300">
                 This platform is an educational resource for understanding software architecture and delivery.
                 The scenarios and examples are based on common industry patterns and should be used as learning tools
